@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+    <link rel="icon" type="image/png" href="https://mytravel.bookingcore.co/uploads/mytravel/general/favicon.png" />
+    <title>Booking History - My Travel</title>
+    <meta name="description" content="" />
+    <link href="https://mytravel.bookingcore.co/libs/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="https://mytravel.bookingcore.co/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="https://mytravel.bookingcore.co/libs/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://mytravel.bookingcore.co/libs/icofont/icofont.min.css" rel="stylesheet">
+    <link href="https://mytravel.bookingcore.co/dist/frontend/css/notification.css" rel="newest stylesheet">
+    <link href="https://mytravel.bookingcore.co/dist/frontend/css/app.css?_ver=2.2.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://mytravel.bookingcore.co/libs/daterange/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="https://mytravel.bookingcore.co/libs/select2/css/select2.min.css">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel='stylesheet' id='google-font-css-css'
+        href='https://fonts.googleapis.com/css?family=Poppins%3A400%2C500%2C600' type='text/css' media='all' />
+    <script>
+        var bookingCore = {
+            url: 'https://mytravel.bookingcore.co',
+            url_root: 'https://mytravel.bookingcore.co',
+            admin_url: 'https://mytravel.bookingcore.co/admin',
+            booking_decimals: 0,
+            thousand_separator: '.',
+            decimal_separator: ',',
+            currency_position: 'left',
+            currency_symbol: '$',
+            currency_rate: '1',
+            date_format: 'MM/DD/YYYY',
+            map_provider: 'gmap',
+            map_gmap_key: '',
+            map_options: {
+                map_lat_default: '',
+                map_lng_default: '',
+                map_clustering: 'on',
+                map_fit_bounds: 'on',
+            },
+            routes: {
+                login: 'https://mytravel.bookingcore.co/login',
+                register: 'https://mytravel.bookingcore.co/register',
+                checkout: 'https://mytravel.bookingcore.co/booking/doCheckout'
+            },
+            currentUser: 18,
+            isAdmin: 0,
+            rtl: false,
+            markAsRead: 'https://mytravel.bookingcore.co/notify/markAsRead',
+            markAllAsRead: 'https://mytravel.bookingcore.co/notify/markAllAsRead',
+            loadNotify: 'https://mytravel.bookingcore.co/notify/notifications',
+            pusher_api_key: '',
+            pusher_cluster: '',
+            language: 'en',
+            module: {}
+        };
+        bookingCore.media = {
+            groups: { "default": { "ext": ["jpg", "jpeg", "png", "gif", "bmp", "docx"], "mime": ["image\/png", "image\/jpeg", "image\/gif", "image\/bmp", "application\/vnd.openxmlformats-officedocument.wordprocessingml.document"], "max_size": 20000000, "max_width": 4000, "max_height": 4000 }, "image": { "ext": ["jpg", "jpeg", "png", "gif", "bmp"], "mime": ["image\/png", "image\/jpeg", "image\/gif", "image\/bmp"], "max_size": 20000000, "max_width": 4000, "max_height": 4000 } },
+        }
+        bookingCore.module.hotel = 'https://mytravel.bookingcore.co/hotel';
+        bookingCore.module.space = 'https://mytravel.bookingcore.co/space';
+        bookingCore.module.car = 'https://mytravel.bookingcore.co/car';
+        bookingCore.module.event = 'https://mytravel.bookingcore.co/event';
+        bookingCore.module.tour = 'https://mytravel.bookingcore.co/tour';
+        bookingCore.module.flight = 'https://mytravel.bookingcore.co/flight';
+        bookingCore.module.boat = 'https://mytravel.bookingcore.co/boat';
+        var i18n = {
+            warning: "Warning",
+            success: "Success",
+            confirm_delete: "Do you want to delete?",
+            confirm: "Confirm",
+            cancel: "Cancel",
+        };
+        var daterangepickerLocale = {
+            "applyLabel": "Apply",
+            "cancelLabel": "Cancel",
+            "fromLabel": "From",
+            "toLabel": "To",
+            "customRangeLabel": "Custom",
+            "weekLabel": "W",
+            "first_day_of_week": 1,
+            "daysOfWeek": [
+                "Su",
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa"
+            ],
+            "monthNames": [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ],
+        };
+        window.currentUrl = 'https://mytravel.bookingcore.co/user/booking-history';
+    </script>
+    <script>
+        var image_editer = {
+            language: 'en',
+            translations: {
+                en: {
+                    'header.image_editor_title': 'Image Editor',
+                    'header.toggle_fullscreen': 'Toggle fullscreen',
+                    'header.close': 'Close',
+                    'header.close_modal': 'Close window',
+                    'toolbar.download': 'Save Change',
+                    'toolbar.save': 'Save',
+                    'toolbar.apply': 'Apply',
+                    'toolbar.saveAsNewImage': 'Save As New Image',
+                    'toolbar.cancel': 'Cancel',
+                    'toolbar.go_back': 'Go Back',
+                    'toolbar.adjust': 'Adjust',
+                    'toolbar.effects': 'Effects',
+                    'toolbar.filters': 'Filters',
+                    'toolbar.orientation': 'Orientation',
+                    'toolbar.crop': 'Crop',
+                    'toolbar.resize': 'Resize',
+                    'toolbar.watermark': 'Watermark',
+                    'toolbar.focus_point': 'Focus point',
+                    'toolbar.shapes': 'Shapes',
+                    'toolbar.image': 'Image',
+                    'toolbar.text': 'Text',
+                    'adjust.brightness': 'Brightness',
+                    'adjust.contrast': 'Contrast',
+                    'adjust.exposure': 'Exposure',
+                    'adjust.saturation': 'Saturation',
+                    'orientation.rotate_l': 'Rotate Left',
+                    'orientation.rotate_r': 'Rotate Right',
+                    'orientation.flip_h': 'Flip Horizontally',
+                    'orientation.flip_v': 'Flip Vertically',
+                    'pre_resize.title': 'Would you like to reduce resolution before editing the image?',
+                    'pre_resize.keep_original_resolution': 'Keep original resolution',
+                    'pre_resize.resize_n_continue': 'Resize &amp; Continue',
+                    'footer.reset': 'Reset',
+                    'footer.undo': 'Undo',
+                    'footer.redo': 'Redo',
+                    'spinner.label': 'Processing...',
+                    'warning.too_big_resolution': 'The resolution of the image is too big for the web. It can cause problems with Image Editor performance.',
+                    'common.x': 'x',
+                    'common.y': 'y',
+                    'common.width': 'width',
+                    'common.height': 'height',
+                    'common.custom': 'custom',
+                    'common.original': 'original',
+                    'common.square': 'square',
+                    'common.opacity': 'Opacity',
+                    'common.apply_watermark': 'Apply watermark',
+                    'common.url': 'URL',
+                    'common.upload': 'Upload',
+                    'common.gallery': 'Gallery',
+                    'common.text': 'Text',
+                }
+            }
+        };
+    </script>
+    <link href="https://mytravel.bookingcore.co/dist/frontend/module/user/css/user.css?_ver=2.2.0" rel="stylesheet">
+    <!-- Styles -->
+    <style type="text/css">
+        .bravo_topbar,
+        .bravo_header,
+        .bravo_footer {
+            display: none;
+        }
+
+        html,
+        body,
+        .bravo_wrap,
+        .bravo_user_profile,
+        .bravo_user_profile>.container-fluid>.row-eq-height>.col-md-3 {
+            min-height: 100vh !important;
+        }
+    </style>
+
+    <link href="https://mytravel.bookingcore.co/custom-css" rel="stylesheet">
+    <link href="https://mytravel.bookingcore.co/libs/carousel-2/owl.carousel.css" rel="stylesheet">
+</head>
+
+<body class="user-page  ">
+    <div class="bravo_wrap">
+        <div
+            class="bravo_topbar u-header__hide-content u-header__topbar u-header__topbar-lg border-bottom   border-color-8 ">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div
+                        class="list-inline u-header__topbar-nav-divider mb-0 topbar_left_text font-size-14   list-inline-dark ">
+                        <div class="socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <span class="line"></span>
+                        <a href="/cdn-cgi/l/email-protection#ff9c90918b9e9c8bbf92868b8d9e899a93d19c9092"><span
+                                class="__cf_email__"
+                                data-cfemail="ef8c80819b8e8c9baf82969b9d8e998a83c18c8082">[email&#160;protected]</span></a>
+                    </div>
+                    <div class="ml-auto d-flex align-items-center">
+                        <div class="d-flex align-items-center text-white px-3">
+                            <i class="flaticon-phone-call mr-2 ml-1 font-size-18"></i>
+                            <span class="d-inline-block font-size-14 mr-1">(+84) 666-888-999</span>
+                        </div>
+                        <div
+                            class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                            <div class="d-flex align-items-center text-white py-3 dropdown">
+                                <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                    data-toggle="dropdown">
+                                    USD
+                                </span>
+                                <ul class="dropdown-menu text-left width-auto min-width-100">
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_currency=eur">
+                                            EUR
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_currency=jpy">
+                                            JPY
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                            <div class="d-flex align-items-center text-white py-3 dropdown">
+                                <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                    data-toggle="dropdown">
+                                    <span class="flag-icon flag-icon-gb"></span>
+                                    English
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-user text-left width-auto">
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=egy"
+                                            class="d-flex">
+                                            <span class="flag-icon flag-icon-eg mr-2"></span>
+                                            Egyptian
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=id"
+                                            class="d-flex">
+                                            <span class="flag-icon flag-icon-id mr-2"></span>
+                                            Indonesia
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=zh_Hant"
+                                            class="d-flex">
+                                            <span class="flag-icon flag-icon-hk mr-2"></span>
+                                            HKHK
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=es"
+                                            class="d-flex">
+                                            <span class="flag-icon flag-icon-es mr-2"></span>
+                                            Español
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=th"
+                                            class="d-flex">
+                                            <span class="flag-icon flag-icon-th mr-2"></span>
+                                            Thailand
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="dropdown-notifications position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
+                            <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link" data-toggle="dropdown">
+                                <i class="flaticon-bell mr-2 ml-1 font-size-18"></i>
+                                <span class="d-inline-block badge badge-danger notification-icon">0</span>
+                            </span>
+                            <ul class="dropdown-menu text-left dropdown overflow-auto notify-items dropdown-large">
+                                <div class="dropdown-toolbar">
+                                    <h3 class="dropdown-toolbar-title">Notifications (<span
+                                            class="notif-count">0</span>)</h3>
+                                    <div class="dropdown-toolbar-actions">
+                                        <a href="#" class="markAllAsRead">Mark all as read</a>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-list-items p-0">
+                                </ul>
+                                <div class="dropdown-footer text-right">
+                                    <a href="https://mytravel.bookingcore.co/notify/notifications">View More</a>
+                                </div>
+                            </ul>
+                        </div>
+                        <div
+                            class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
+                            <div class="d-flex align-items-center text-white py-3 dropdown">
+                                <i class="flaticon-user mr-2 ml-1 font-size-18"></i>
+                                <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link" data-toggle="dropdown">
+                                    Hi, Rodolphe Frid
+                                </span>
+
+                                <ul class="dropdown-menu dropdown-menu-user text-left dropdown">
+                                    <li class="">
+                                        <a href="https://mytravel.bookingcore.co/user/profile"><i
+                                                class="icon ion-md-construct"></i> My profile</a>
+                                    </li>
+                                    <li class=""><a href="https://mytravel.bookingcore.co/user/booking-history"><i
+                                                class="fa fa-clock-o"></i> Booking History</a></li>
+                                    <li class=""><a
+                                            href="https://mytravel.bookingcore.co/user/profile/change-password"><i
+                                                class="fa fa-lock"></i> Change password</a></li>
+                                    <li class="">
+                                        <a href="#"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i
+                                                class="fa fa-sign-out"></i> Logout</a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form-topbar" action="https://mytravel.bookingcore.co/logout"
+                                    method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header id="header" class="            header-white u-header u-header--dark-nav-links-xl u-header--show-hide-xl u-header--static-xl border-bottom
+        " data-header-fix-moment="500" data-header-fix-effect="slide">
+            <div class="u-header__section u-header__shadow-on-show-hide">
+                <div
+                    class="bravo_topbar u-header__hide-content u-header__topbar u-header__topbar-lg border-bottom   border-color-8 ">
+                    <div class="container">
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="list-inline u-header__topbar-nav-divider mb-0 topbar_left_text font-size-14   list-inline-dark ">
+                                <div class="socials">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                </div>
+                                <span class="line"></span>
+                                <a href="/cdn-cgi/l/email-protection#6e0d01001a0f0d1a2e03171a1c0f180b02400d0103"><span
+                                        class="__cf_email__"
+                                        data-cfemail="4724282933262433072a3e33352631222b6924282a">[email&#160;protected]</span></a>
+                            </div>
+                            <div class="ml-auto d-flex align-items-center">
+                                <div class="d-flex align-items-center text-white px-3">
+                                    <i class="flaticon-phone-call mr-2 ml-1 font-size-18"></i>
+                                    <span class="d-inline-block font-size-14 mr-1">(+84) 666-888-999</span>
+                                </div>
+                                <div
+                                    class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                                    <div class="d-flex align-items-center text-white py-3 dropdown">
+                                        <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                            data-toggle="dropdown">
+                                            USD
+                                        </span>
+                                        <ul class="dropdown-menu text-left width-auto min-width-100">
+                                            <li>
+                                                <a
+                                                    href="https://mytravel.bookingcore.co/user/booking-history?set_currency=eur">
+                                                    EUR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="https://mytravel.bookingcore.co/user/booking-history?set_currency=jpy">
+                                                    JPY
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div
+                                    class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                                    <div class="d-flex align-items-center text-white py-3 dropdown">
+                                        <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                            data-toggle="dropdown">
+                                            <span class="flag-icon flag-icon-gb"></span>
+                                            English
+                                        </span>
+                                        <ul class="dropdown-menu dropdown-menu-user text-left width-auto">
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=egy"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-eg mr-2"></span>
+                                                    Egyptian
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=id"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-id mr-2"></span>
+                                                    Indonesia
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=zh_Hant"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-hk mr-2"></span>
+                                                    HKHK
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=es"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-es mr-2"></span>
+                                                    Español
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=th"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-th mr-2"></span>
+                                                    Thailand
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div
+                                    class="dropdown-notifications position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
+                                    <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link"
+                                        data-toggle="dropdown">
+                                        <i class="flaticon-bell mr-2 ml-1 font-size-18"></i>
+                                        <span class="d-inline-block badge badge-danger notification-icon">0</span>
+                                    </span>
+                                    <ul
+                                        class="dropdown-menu text-left dropdown overflow-auto notify-items dropdown-large">
+                                        <div class="dropdown-toolbar">
+                                            <h3 class="dropdown-toolbar-title">Notifications (<span
+                                                    class="notif-count">0</span>)</h3>
+                                            <div class="dropdown-toolbar-actions">
+                                                <a href="#" class="markAllAsRead">Mark all as read</a>
+                                            </div>
+                                        </div>
+                                        <ul class="dropdown-list-items p-0">
+                                        </ul>
+                                        <div class="dropdown-footer text-right">
+                                            <a href="https://mytravel.bookingcore.co/notify/notifications">View More</a>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <div
+                                    class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider">
+                                    <div class="d-flex align-items-center text-white py-3 dropdown">
+                                        <i class="flaticon-user mr-2 ml-1 font-size-18"></i>
+                                        <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link"
+                                            data-toggle="dropdown">
+                                            Hi, Rodolphe Frid
+                                        </span>
+
+                                        <ul class="dropdown-menu dropdown-menu-user text-left dropdown">
+                                            <li class="">
+                                                <a href="https://mytravel.bookingcore.co/user/profile"><i
+                                                        class="icon ion-md-construct"></i> My profile</a>
+                                            </li>
+                                            <li class=""><a
+                                                    href="https://mytravel.bookingcore.co/user/booking-history"><i
+                                                        class="fa fa-clock-o"></i> Booking History</a></li>
+                                            <li class=""><a
+                                                    href="https://mytravel.bookingcore.co/user/profile/change-password"><i
+                                                        class="fa fa-lock"></i> Change password</a></li>
+                                            <li class="">
+                                                <a href="#"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form-topbar').submit();"><i
+                                                        class="fa fa-sign-out"></i> Logout</a>
+                                            </li>
+                                        </ul>
+                                        <form id="logout-form-topbar" action="https://mytravel.bookingcore.co/logout"
+                                            method="POST" style="display: none;">
+                                            <input type="hidden" name="_token"
+                                                value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bravo_header">
+                    <div class="container">
+                        <div class="content">
+                            <div class="header-left">
+                                <a href="https://mytravel.bookingcore.co"
+                                    class="bravo-logo navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white mr-0 mr-xl-5">
+                                    <img src="https://mytravel.bookingcore.co/uploads/mytravel/general/logo_white.svg"
+                                        alt="My Travel">
+                                    <span class="u-header__navbar-brand-text">MyTravel</span>
+                                </a>
+                                <a class="bravo-logo navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll"
+                                    href="https://mytravel.bookingcore.co">
+                                    <img src="https://mytravel.bookingcore.co/uploads/mytravel/general/logo.svg"
+                                        alt="My Travel">
+                                    <span class="u-header__navbar-brand-text">MyTravel</span>
+                                </a>
+                                <div class="bravo-menu">
+                                    <ul class="main-menu menu-generated">
+                                        <li class=" depth-0"><a target="" href="/">Home <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/">Home Page</a></li>
+                                                <li class=" depth-1"><a target="" href="/page/home-v2">Home v2</a></li>
+                                                <li class=" depth-1"><a target="" href="/page/home-hotel">Home Hotel</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/page/home-tour">Home Tour</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/page/home-space">Home Space</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/page/home-event">Home Event</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/page/home-car">Home Car</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/hotel">Hotel <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/hotel">Hotel List</a></li>
+                                                <li class=" depth-1"><a target="" href="/hotel?_layout=map">Hotel
+                                                        Map</a></li>
+                                                <li class=" depth-1"><a target=""
+                                                        href="/hotel/parian-holiday-villas">Hotel Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/tour">Tours <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/tour">Tour List</a></li>
+                                                <li class=" depth-1"><a target="" href="/tour?_layout=map">Tour Map</a>
+                                                </li>
+                                                <li class=" depth-1"><a target=""
+                                                        href="/tour/paris-vacation-travel">Tour Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/space">Space <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/space">Space List</a></li>
+                                                <li class=" depth-1"><a target="" href="/space?_layout=map">Space
+                                                        Map</a></li>
+                                                <li class=" depth-1"><a target=""
+                                                        href="/space/stay-greenwich-village">Space Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/car">Car <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/car">Car List</a></li>
+                                                <li class=" depth-1"><a target="" href="/car?_layout=map">Car Map</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/car/vinfast-lux-a20-plus">Car
+                                                        Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/event">Event <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/event">Event List</a></li>
+                                                <li class=" depth-1"><a target="" href="/event?_layout=map">Event
+                                                        Map</a></li>
+                                                <li class=" depth-1"><a target=""
+                                                        href="/event/aspen-glade-weddings-events">Event Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="/flight">Flight</a></li>
+                                        <li class=" depth-0"><a target="" href="/boat">Boat <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/boat">Boat List</a></li>
+                                                <li class=" depth-1"><a target="" href="/boat?_layout=map">Boat Map</a>
+                                                </li>
+                                                <li class=" depth-1"><a target="" href="/boat/blue-moon-yc-300">Boat
+                                                        Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=" depth-0"><a target="" href="#">Pages <i
+                                                    class="caret fa fa-angle-down"></i></a>
+                                            <ul class="children-menu menu-dropdown">
+                                                <li class=" depth-1"><a target="" href="/plan">Plan</a></li>
+                                                <li class=" depth-1"><a target="" href="/news">News List</a></li>
+                                                <li class=" depth-1"><a target=""
+                                                        href="/news/morning-in-the-northern-sea">News Detail</a></li>
+                                                <li class=" depth-1"><a target="" href="/location/paris">Location
+                                                        Detail</a></li>
+                                                <li class=" depth-1"><a target="" href="/page/become-a-vendor">Become a
+                                                        vendor</a></li>
+                                                <li class=" depth-1"><a target="" href="/contact">Contact</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="header-right">
+                                <button class="bravo-more-menu">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bravo-menu-mobile" style="display:none;">
+                        <div class="user-profile">
+                            <div class="b-close"><i class="icofont-scroll-left"></i></div>
+                            <div class="avatar"></div>
+                            <ul>
+                                <li>
+                                    <a href="https://mytravel.bookingcore.co/user/profile">
+                                        <i class="icofont-user-suited"></i> Hi, Rodolphe Frid
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://mytravel.bookingcore.co/user/profile">
+                                        <i class="icon ion-md-construct"></i> My profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+                                        <i class="fa fa-sign-out"></i> Logout
+                                    </a>
+                                    <form id="logout-form-mobile" action="https://mytravel.bookingcore.co/logout"
+                                        method="POST" style="display: none;">
+                                        <input type="hidden" name="_token"
+                                            value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                                    </form>
+                                </li>
+
+                            </ul>
+                            <ul class="multi-lang">
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="is_login">
+                                        USD
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu text-left width-auto">
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_currency=eur"
+                                                class="is_login">
+                                                EUR
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_currency=jpy"
+                                                class="is_login">
+                                                JPY
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="multi-lang">
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="is_login">
+                                        <span class="flag-icon flag-icon-gb"></span>
+                                        English
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu text-left">
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=egy"
+                                                class="is_login">
+                                                <span class="flag-icon flag-icon-eg"></span>
+                                                Egyptian
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=id"
+                                                class="is_login">
+                                                <span class="flag-icon flag-icon-id"></span>
+                                                Indonesia
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=zh_Hant"
+                                                class="is_login">
+                                                <span class="flag-icon flag-icon-hk"></span>
+                                                HKHK
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=es"
+                                                class="is_login">
+                                                <span class="flag-icon flag-icon-es"></span>
+                                                Español
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=th"
+                                                class="is_login">
+                                                <span class="flag-icon flag-icon-th"></span>
+                                                Thailand
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="g-menu">
+                            <ul class="main-menu menu-generated">
+                                <li class=" depth-0"><a target="" href="/">Home <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/">Home Page</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-v2">Home v2</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-hotel">Home Hotel</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-tour">Home Tour</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-space">Home Space</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-event">Home Event</a></li>
+                                        <li class=" depth-1"><a target="" href="/page/home-car">Home Car</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/hotel">Hotel <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/hotel">Hotel List</a></li>
+                                        <li class=" depth-1"><a target="" href="/hotel?_layout=map">Hotel Map</a></li>
+                                        <li class=" depth-1"><a target="" href="/hotel/parian-holiday-villas">Hotel
+                                                Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/tour">Tours <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/tour">Tour List</a></li>
+                                        <li class=" depth-1"><a target="" href="/tour?_layout=map">Tour Map</a></li>
+                                        <li class=" depth-1"><a target="" href="/tour/paris-vacation-travel">Tour
+                                                Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/space">Space <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/space">Space List</a></li>
+                                        <li class=" depth-1"><a target="" href="/space?_layout=map">Space Map</a></li>
+                                        <li class=" depth-1"><a target="" href="/space/stay-greenwich-village">Space
+                                                Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/car">Car <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/car">Car List</a></li>
+                                        <li class=" depth-1"><a target="" href="/car?_layout=map">Car Map</a></li>
+                                        <li class=" depth-1"><a target="" href="/car/vinfast-lux-a20-plus">Car
+                                                Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/event">Event <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/event">Event List</a></li>
+                                        <li class=" depth-1"><a target="" href="/event?_layout=map">Event Map</a></li>
+                                        <li class=" depth-1"><a target=""
+                                                href="/event/aspen-glade-weddings-events">Event Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="/flight">Flight</a></li>
+                                <li class=" depth-0"><a target="" href="/boat">Boat <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/boat">Boat List</a></li>
+                                        <li class=" depth-1"><a target="" href="/boat?_layout=map">Boat Map</a></li>
+                                        <li class=" depth-1"><a target="" href="/boat/blue-moon-yc-300">Boat Detail</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=" depth-0"><a target="" href="#">Pages <i
+                                            class="caret fa fa-angle-down"></i></a>
+                                    <ul class="children-menu menu-dropdown">
+                                        <li class=" depth-1"><a target="" href="/plan">Plan</a></li>
+                                        <li class=" depth-1"><a target="" href="/news">News List</a></li>
+                                        <li class=" depth-1"><a target="" href="/news/morning-in-the-northern-sea">News
+                                                Detail</a></li>
+                                        <li class=" depth-1"><a target="" href="/location/paris">Location Detail</a>
+                                        </li>
+                                        <li class=" depth-1"><a target="" href="/page/become-a-vendor">Become a
+                                                vendor</a></li>
+                                        <li class=" depth-1"><a target="" href="/contact">Contact</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div class="bravo_user_profile">
+            <div class="container-fluid">
+                <div class="row row-eq-height">
+                    <div class="col-md-3">
+                        <div class="sidebar-user">
+                            <div class="bravo-close-menu-user"><i class="icofont-scroll-left"></i></div>
+                            <div class="logo">
+                                <div class="avatar avatar-cover"
+                                    style="background-image: url('https://mytravel.bookingcore.co/images/avatar.png')">
+                                </div>
+                            </div>
+                            <div class="user-profile-avatar">
+                                <div class="info-new">
+                                    <span class="role-name badge badge-info">customer</span>
+                                    <h5>Rodolphe Frid</h5>
+                                    <p>Member Since Jul 2023</p>
+                                </div>
+                            </div>
+                            <div class="user-profile-plan">
+                                <a href=" https://mytravel.bookingcore.co/user/upgrade-vendor">Become a vendor</a>
+                            </div>
+                            <div class="sidebar-menu">
+                                <ul class="main-menu">
+                                    <li class="active" position="20">
+                                        <a href="https://mytravel.bookingcore.co/user/booking-history">
+                                            <span class="icon text-center"><i class="fa fa-clock-o"></i></span>
+                                            Booking History
+
+                                        </a>
+                                    </li>
+                                    <li class="" position="21">
+                                        <a href="https://mytravel.bookingcore.co/user/wishlist">
+                                            <span class="icon text-center"><i class="fa fa-heart-o"></i></span>
+                                            Wishlist
+
+                                        </a>
+                                    </li>
+                                    <li class="" position="22">
+                                        <a href="https://mytravel.bookingcore.co/user/profile">
+                                            <span class="icon text-center"><i class="fa fa-cogs"></i></span>
+                                            My Profile
+
+                                        </a>
+                                    </li>
+                                    <li class="" position="85">
+                                        <a href="https://mytravel.bookingcore.co/user/verification">
+                                            <span class="icon text-center"><i class="fa fa-handshake-o"></i></span>
+                                            Verifications
+
+                                        </a>
+                                    </li>
+                                    <li class="" position="100">
+                                        <a href="https://mytravel.bookingcore.co/user/profile/change-password">
+                                            <span class="icon text-center"><i class="fa fa-lock"></i></span>
+                                            Change password
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="logout">
+                                <form id="logout-form-vendor" action="https://mytravel.bookingcore.co/logout"
+                                    method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                                </form>
+                                <a href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i
+                                        class="fa fa-sign-out"></i> Log Out
+                                </a>
+                            </div>
+                            <div class="logout">
+                                <a href="https://mytravel.bookingcore.co" style="color: #1ABC9C"><i
+                                        class="fa fa-long-arrow-left"></i> Back to Homepage</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="user-form-settings">
+                            <div class="breadcrumb-page-bar" aria-label="breadcrumb">
+                                <ul class="page-breadcrumb">
+                                    <li class="">
+                                        <a href="https://mytravel.bookingcore.co"><i class='fa fa-home'></i> Home</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li class=" active">
+                                        Booking History
+                                    </li>
+                                </ul>
+                                <div class="dropdown dropdown-notifications float-right" style="min-width: 0">
+                                    <a data-toggle="dropdown" class="user-dropdown d-flex align-items-center"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bell m-1 p-1"></i>
+                                        <span class="badge badge-danger notification-icon">0</span>
+                                    </a>
+                                    <div class="dropdown-menu overflow-auto notify-items dropdown-container dropdown-menu-right dropdown-large"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-toolbar">
+                                            <div class="dropdown-toolbar-actions">
+                                                <a href="#" class="markAllAsRead">Mark all as read</a>
+                                            </div>
+                                            <h3 class="dropdown-toolbar-title">Notifications (<span
+                                                    class="notif-count">0</span>)</h3>
+                                        </div>
+                                        <ul class="dropdown-list-items p-0">
+                                        </ul>
+                                        <div class="dropdown-footer text-center">
+                                            <a href="https://mytravel.bookingcore.co/notify/notifications">View More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bravo-more-menu-user">
+                                    <i class="icofont-settings"></i>
+                                </div>
+                            </div>
+                            <h2 class="title-bar no-border-bottom">
+                                Booking History
+                            </h2>
+                            <div class="booking-history-manager">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs ht-nav-tabs">
+                                        <li class=" active ">
+                                            <a href="https://mytravel.bookingcore.co/user/booking-history">All
+                                                Booking</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=completed">Completed</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=processing">Processing</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=confirmed">Confirmed</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=cancelled">Cancelled</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=paid">Paid</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=unpaid">Unpaid</a>
+                                        </li>
+                                        <li class="">
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?status=partial_payment">Partial
+                                                Payment</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-booking-history">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="2%">Type</th>
+                                                        <th>Title</th>
+                                                        <th class="a-hidden">Order Date</th>
+                                                        <th class="a-hidden">Execution Time</th>
+                                                        <th>Total</th>
+                                                        <th>Paid</th>
+                                                        <th>Remain</th>
+                                                        <th class="a-hidden">Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="booking-history-type">
+                                                            <i class="icofont-ui-flight"></i>
+                                                            <small>flight</small>
+                                                        </td>
+                                                        <td>
+                                                            Anibal Schultz
+                                                            (VJ899)
+                                                        </td>
+                                                        <td class="a-hidden">07/31/2023</td>
+                                                        <td class="a-hidden">
+                                                            Departure time : 06/29/2023 07:43 <br>
+                                                            Arrival Time : 06/29/2023 14:43 <br>
+                                                            Duration : 7 hrs
+
+                                                        </td>
+                                                        <td>$55</td>
+                                                        <td>$0</td>
+                                                        <td>$55</td>
+                                                        <td class="processing a-hidden">Processing</td>
+                                                        <td width="2%">
+                                                            <a class="btn btn-xs btn-primary btn-info-booking"
+                                                                data-toggle="modal" data-target="#modal-booking-49">
+                                                                <i class="fa fa-info-circle"></i>Details
+                                                            </a>
+                                                            <div class="modal fade" id="modal-booking-49">
+                                                                <div
+                                                                    class="modal-dialog modal-dialog-centered modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <!-- Modal Header -->
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title">Booking ID: #49</h4>
+                                                                        </div>
+                                                                        <!-- Modal body -->
+                                                                        <div class="modal-body">
+                                                                            <ul class="nav nav-tabs">
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link active"
+                                                                                        data-toggle="tab"
+                                                                                        href="#booking-detail-49">Booking
+                                                                                        Detail</a>
+                                                                                </li>
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link"
+                                                                                        data-toggle="tab"
+                                                                                        href="#booking-customer-49">
+
+                                                                                        Customer Information
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                            <div class="tab-content">
+                                                                                <div id="booking-detail-49"
+                                                                                    class="tab-pane active"><br>
+                                                                                    <div class="booking-review">
+                                                                                        <div
+                                                                                            class="booking-review-content">
+                                                                                            <div class="review-section">
+                                                                                                <div class="info-form">
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <div
+                                                                                                                class="label">
+                                                                                                                Booking
+                                                                                                                Status
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                class="val">
+                                                                                                                Processing
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <div
+                                                                                                                class="label">
+                                                                                                                Booking
+                                                                                                                Date
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                class="val">
+                                                                                                                07/31/2023
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <div
+                                                                                                                class="label">
+                                                                                                                Payment
+                                                                                                                Method
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                class="val">
+                                                                                                                Offline
+                                                                                                                Payment
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="more-booking-review">
+                                                                                        <div
+                                                                                            class="shadow-soft bg-white rounded-sm booking-review">
+                                                                                            <div
+                                                                                                class="pt-5 pb-3 px-5 border-bottom">
+                                                                                                <a href="#"
+                                                                                                    class="d-block mb-3">
+                                                                                                    <img class="img-fluid rounded-xs"
+                                                                                                        src="https://mytravel.bookingcore.co/uploads/demo/flight/airline/img1.jpg"
+                                                                                                        alt="East Rosiefurt">
+                                                                                                </a>
+                                                                                                <a href="#"
+                                                                                                    class="text-dark font-weight-bold mb-1">South
+                                                                                                    Wainoville to Port
+                                                                                                    Rosario</a>
+                                                                                                <div
+                                                                                                    class="flex-content-center flex-column mb-1">
+                                                                                                    <h6
+                                                                                                        class="font-size-14 font-weight-bold text-gray-5 mb-0">
+                                                                                                        7 hrs</h6>
+                                                                                                    <div
+                                                                                                        class="width-60 border-top border-primary border-width-2 my-1">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="flex-horizontal-center justify-content-between">
+                                                                                                    <div
+                                                                                                        class="flex-horizontal-center">
+                                                                                                        <div
+                                                                                                            class="mr-2">
+                                                                                                            <i
+                                                                                                                class="flaticon-aeroplane font-size-30 text-primary"></i>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="text-lh-sm ml-1">
+                                                                                                            <h6
+                                                                                                                class="font-weight-bold font-size-21 text-gray-5 mb-0">
+                                                                                                                07:43
+                                                                                                            </h6>
+                                                                                                            <span
+                                                                                                                class="font-size-14 font-weight-normal text-gray-1">South
+                                                                                                                Wainoville</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="text-center d-none d-md-block d-lg-none">
+                                                                                                        <div
+                                                                                                            class="mb-1">
+                                                                                                            <h6
+                                                                                                                class="font-size-14 font-weight-bold text-gray-5 mb-0">
+                                                                                                                7 hrs
+                                                                                                            </h6>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="flex-horizontal-center">
+                                                                                                        <div
+                                                                                                            class="mr-2">
+                                                                                                            <i
+                                                                                                                class="d-block rotate-90 flaticon-aeroplane font-size-30 text-primary"></i>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="text-lh-sm ml-1">
+                                                                                                            <h6
+                                                                                                                class="font-weight-bold font-size-21 text-gray-5 mb-0">
+                                                                                                                14:43
+                                                                                                            </h6>
+                                                                                                            <span
+                                                                                                                class="font-size-14 font-weight-normal text-gray-1">Port
+                                                                                                                Rosario</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                id="basicsAccordionBooking">
+                                                                                                <div
+                                                                                                    class="card rounded-0 border-top-0 border-left-0 border-right-0">
+                                                                                                    <div
+                                                                                                        class="card-header card-collapse bg-transparent border-0">
+                                                                                                        <h5
+                                                                                                            class="mb-0">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark"
+                                                                                                                data-toggle="collapse"
+                                                                                                                data-target="#basicsCollapseDetail">
+                                                                                                                Booking
+                                                                                                                Detail
+                                                                                                                <span
+                                                                                                                    class="card-btn-arrow font-size-14 text-dark"><i
+                                                                                                                        class="fa fa-chevron-down"></i></span>
+                                                                                                            </button>
+                                                                                                        </h5>
+                                                                                                    </div>
+                                                                                                    <div id="basicsCollapseDetail"
+                                                                                                        class="collapse show"
+                                                                                                        data-parent="#basicsAccordionBooking">
+                                                                                                        <div
+                                                                                                            class="card-body px-4 pt-0">
+
+                                                                                                            <ul
+                                                                                                                class="list-unstyled font-size-1 mb-0 font-size-16">
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Start
+                                                                                                                        Date
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        06/29/2023
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Duration
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        7
+                                                                                                                        hours
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Business:
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        1
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="card rounded-0 border-top-0 border-left-0 border-right-0">
+                                                                                                    <div class="card-header card-collapse bg-transparent border-0"
+                                                                                                        id="basicsHeadingFour">
+                                                                                                        <h5
+                                                                                                            class="mb-0">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-4 font-size-17 font-weight-bold text-dark"
+                                                                                                                data-toggle="collapse"
+                                                                                                                data-target="#basicsCollapsePayment">
+                                                                                                                Payment
+                                                                                                                <span
+                                                                                                                    class="card-btn-arrow font-size-14 text-dark"><i
+                                                                                                                        class="fa fa-chevron-down"></i></span>
+                                                                                                            </button>
+                                                                                                        </h5>
+                                                                                                    </div>
+                                                                                                    <div id="basicsCollapsePayment"
+                                                                                                        class="collapse show">
+                                                                                                        <div
+                                                                                                            class="card-body px-4 pt-0">
+                                                                                                            <ul
+                                                                                                                class="list-unstyled font-size-1 mb-0 font-size-16">
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Business:
+                                                                                                                        1
+                                                                                                                        *
+                                                                                                                        $55
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        $55
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex flex-column border-0 mb-0 mt-2">
+                                                                                                                    <div
+                                                                                                                        class="section-coupon-form">
+                                                                                                                        <ul
+                                                                                                                            class="p-0 mb-3 list-coupons ">
+                                                                                                                        </ul>
+                                                                                                                        <div
+                                                                                                                            class="message alert-text mt-2">
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Total:
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        $55
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Paid:
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        $0
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                                <li
+                                                                                                                    class="d-flex justify-content-between py-2">
+                                                                                                                    <div
+                                                                                                                        class="label">
+                                                                                                                        Remain:
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="val">
+                                                                                                                        $55
+                                                                                                                    </div>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="booking-customer-49"
+                                                                                    class="tab-pane fade"><br>
+                                                                                    <div
+                                                                                        class="pt-4 pb-5 px-5 border-bottom booking-review">
+                                                                                        <h5 id="scroll-description"
+                                                                                            class="font-size-21 font-weight-bold text-dark mb-2">
+                                                                                            Your Information
+                                                                                        </h5>
+                                                                                        <!-- Fact List -->
+                                                                                        <ul
+                                                                                            class="list-unstyled font-size-1 mb-0 font-size-16">
+                                                                                            <li
+                                                                                                class="info-first-name d-flex justify-content-between py-2">
+                                                                                                <div class="label">First
+                                                                                                    name</div>
+                                                                                                <div class="val">
+                                                                                                    Rodolphe</div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-last-name d-flex justify-content-between py-2">
+                                                                                                <div class="label">Last
+                                                                                                    name</div>
+                                                                                                <div class="val">Frid
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-email d-flex justify-content-between py-2">
+                                                                                                <div class="label">Email
+                                                                                                </div>
+                                                                                                <div class="val"><a
+                                                                                                        href="/cdn-cgi/l/email-protection"
+                                                                                                        class="__cf_email__"
+                                                                                                        data-cfemail="4a38252e25263a222f2c2b2e250a2d272b232664292527">[email&#160;protected]</a>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-phone d-flex justify-content-between py-2">
+                                                                                                <div class="label">Phone
+                                                                                                </div>
+                                                                                                <div class="val">
+                                                                                                    58864401</div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-address d-flex justify-content-between py-2">
+                                                                                                <div class="label">
+                                                                                                    Address line 1</div>
+                                                                                                <div class="val">add1
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-address2 d-flex justify-content-between py-2">
+                                                                                                <div class="label">
+                                                                                                    Address line 2</div>
+                                                                                                <div class="val"></div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-city d-flex justify-content-between py-2">
+                                                                                                <div class="label">City
+                                                                                                </div>
+                                                                                                <div class="val">cotonou
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-state d-flex justify-content-between py-2">
+                                                                                                <div class="label">
+                                                                                                    State/Province/Region
+                                                                                                </div>
+                                                                                                <div class="val">france
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-zip-code d-flex justify-content-between py-2">
+                                                                                                <div class="label">ZIP
+                                                                                                    code/Postal code
+                                                                                                </div>
+                                                                                                <div class="val">123
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-country d-flex justify-content-between py-2">
+                                                                                                <div class="label">
+                                                                                                    Country</div>
+                                                                                                <div class="val">Benin
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="info-notes d-flex justify-content-between py-2">
+                                                                                                <div class="label">
+                                                                                                    Special Requirements
+                                                                                                </div>
+                                                                                                <div class="val">ok ok
+                                                                                                    ok</div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                        <!-- End Fact List -->
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Modal footer -->
+                                                                        <div class="modal-footer">
+                                                                            <span class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <a href="https://mytravel.bookingcore.co/user/booking/9bea6f9acf01063315d9087103bdcd8d/invoice"
+                                                                class="btn btn-xs btn-primary btn-info-booking open-new-window mt-1"
+                                                                onclick="window.open(this.href); return false;">
+                                                                <i class="fa fa-print"></i>Invoice
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="bravo-pagination">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal" tabindex="-1" id="modal_booking_detail">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Booking ID: # <span class="user_id"></span></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex justify-content-center">Loading...</div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bravo_footer mt-4 border-top">
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row justify-content-xl-between">
+                        <div class="col-12 col-lg-4 col-xl-3dot1 mb-6 mb-md-10 mb-xl-0">
+                            <div class="d-md-flex d-lg-block">
+                                <div class="mb-5 mr-md-7 mr-lg-0">
+                                    <h4 class="h6 mb-4 font-weight-bold">Need My Travel Help?</h4>
+                                    <a href="tel:8420666888999">
+                                    </a>
+                                    <div class="d-flex align-items-center"><a href="tel:8420666888999">
+                                        </a>
+                                        <div class="mr-4"><a href="tel:8420666888999">
+                                                <i class="fa fa-phone font-size-50"></i>
+                                            </a></div><a href="tel:8420666888999">
+                                        </a>
+                                        <div><a href="tel:8420666888999">
+                                            </a>
+                                            <div class="mb-2 h6 font-weight-normal text-gray-1"><a
+                                                    href="tel:8420666888999">Got Questions ? Call us 24/7</a></div><a
+                                                href="tel:8420666888999">
+                                                <small class="d-block font-size-16 font-weight-normal text-primary">Call
+                                                    Us: <span class="text-primary font-weight-semi-bold">(+84)
+                                                        666-888-999</span></small>
+                                            </a>
+                                        </div><a href="tel:8420666888999">
+                                        </a>
+                                    </div><a href="tel:8420666888999">
+                                    </a>
+                                </div>
+                                <div class="ml-md-6 ml-lg-0">
+                                    <div class="mb-4">
+                                        <h4 class="h6 font-weight-bold mb-2 font-size-17">Contact Info</h4>
+                                        <address class="pr-4">
+                                            <span class="mb-2 h6 font-weight-normal text-gray-1">
+                                                PO Box CT16122 Collins Street West, Victoria 8007,Australia.
+                                            </span>
+                                        </address>
+                                    </div>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item mr-2">
+                                            <a class="btn btn-icon btn-social btn-bg-transparent" href="#">
+                                                <span class="fa fa-facebook-f btn-icon__inner"></span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item mr-2">
+                                            <a class="btn btn-icon btn-social btn-bg-transparent" href="#">
+                                                <span class="fa fa-twitter btn-icon__inner"></span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item mr-2">
+                                            <a class="btn btn-icon btn-social btn-bg-transparent" href="#">
+                                                <span class="fa fa-instagram btn-icon__inner"></span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item mr-2">
+                                            <a class="btn btn-icon btn-social btn-bg-transparent" href="#">
+                                                <span class="fa fa-linkedin btn-icon__inner"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                            <div class="nav-footer">
+                                <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Company</h4>
+                                <ul class="list-group list-group-flush list-group-borderless mb-0">
+                                    <li><a class="text-decoration-on-hover list-group-item list-group-item-action"
+                                            href="#">About us</a></li>
+                                    <li><a class="text-decoration-on-hover list-group-item list-group-item-action"
+                                            href="#">Careers</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Terms of Use</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Privacy Statement</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Give Us Feedbacks</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                            <div class="nav-footer">
+                                <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Other Services</h4>
+                                <ul class="list-group list-group-flush list-group-borderless mb-0">
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Investor Relations</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Rewards Program</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">PointsPLUS</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Partners</a></li>
+                                    <li><a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">List My Hotel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                            <div class="nav-footer">
+                                <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Support</h4>
+                                <ul class="list-group list-group-flush list-group-borderless mb-0">
+                                    <li>
+                                        <a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Account</a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Legal</a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Affiliate Program</a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item list-group-item-action text-decoration-on-hover"
+                                            href="#">Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg col-xl-3dot1">
+                            <div class="mb-4 mb-xl-2">
+                                <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Mailing List</h4>
+                                <p class="m-0 text-gray-1">Sign up for our mailing list to get latest updates and
+                                    offers.</p>
+                            </div>
+                            <form action="https://mytravel.bookingcore.co/newsletter/subscribe"
+                                class="subcribe-form bravo-subscribe-form bravo-form">
+                                <input type="hidden" name="_token" value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                                <div class="input-group">
+                                    <input type="text" name="email"
+                                        class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8 email-input"
+                                        placeholder="Your Email">
+                                    <div class="input-group-append ml-3">
+                                        <button type="submit"
+                                            class="btn-submit btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14">Subscribe
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-mess"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-bottom border-color-8 space-1">
+                <div class="container">
+                    <div class="sub-footer d-flex align-items-center justify-content-between">
+                        <a class="d-inline-flex align-items-center" href="https://mytravel.bookingcore.co"
+                            aria-label="MyTravel">
+                            <img class=' lazy'
+                                data-src=https://mytravel.bookingcore.co/uploads/mytravel/general/logo.svg alt=''>
+                            <span class="brand brand-dark">MyTravel</span>
+                        </a>
+                        <div class="footer-select bravo_topbar d-flex align-items-center">
+                            <div class="mr-3">
+                                <div
+                                    class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                                    <div class="d-flex align-items-center text-white py-3 dropdown">
+                                        <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                            data-toggle="dropdown">
+                                            <span class="flag-icon flag-icon-gb"></span>
+                                            English
+                                        </span>
+                                        <ul class="dropdown-menu dropdown-menu-user text-left width-auto">
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=egy"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-eg mr-2"></span>
+                                                    Egyptian
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=id"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-id mr-2"></span>
+                                                    Indonesia
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=zh_Hant"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-hk mr-2"></span>
+                                                    HKHK
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=es"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-es mr-2"></span>
+                                                    Español
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://mytravel.bookingcore.co/user/booking-history?set_lang=th"
+                                                    class="d-flex">
+                                                    <span class="flag-icon flag-icon-th mr-2"></span>
+                                                    Thailand
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="position-relative px-3 u-header__login-form dropdown-connector-xl u-header__topbar-divider currency-select">
+                                <div class="d-flex align-items-center text-white py-3 dropdown">
+                                    <span class="d-inline-block font-size-14 mr-1 dropdown-nav-link "
+                                        data-toggle="dropdown">
+                                        USD
+                                    </span>
+                                    <ul class="dropdown-menu text-left width-auto min-width-100">
+                                        <li>
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?set_currency=eur">
+                                                EUR
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://mytravel.bookingcore.co/user/booking-history?set_currency=jpy">
+                                                JPY
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copy-right">
+                <div class="container context">
+                    <div class="row">
+                        <div class="col-md-12">
+                            © 2021 MyTravel. All rights reserved
+                            <div class="f-visa">
+                                MyTravel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="travel-go-to u-go-to-modern" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
+            data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp"
+            data-hide-effect="slideOutDown">
+            <span class="flaticon-arrow u-go-to-modern__inner"></span>
+        </a>
+        <div class="modal fade login" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content relative">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Log In</h4>
+                        <span class="c-pointer" data-dismiss="modal" aria-label="Close">
+                            <i class="input-icon field-icon fa">
+                                <img src="https://mytravel.bookingcore.co/images/ico_close.svg" alt="close">
+                            </i>
+                        </span>
+                    </div>
+                    <div class="modal-body relative">
+                        <form class="bravo-form-login" method="POST" action="https://mytravel.bookingcore.co/login">
+                            <input type="hidden" name="redirect" value="">
+                            <input type="hidden" name="_token" value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="email" autocomplete="off"
+                                    placeholder="Email address">
+                                <i class="input-icon icofont-mail"></i>
+                                <span class="invalid-feedback error error-email"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" autocomplete="off"
+                                    placeholder="Password">
+                                <i class="input-icon icofont-ui-password"></i>
+                                <span class="invalid-feedback error error-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between">
+                                    <label for="remember-me" class="mb0">
+                                        <input type="checkbox" name="remember" id="remember-me" value="1"> Remember me
+                                        <span class="checkmark fcheckbox"></span>
+                                    </label>
+                                    <a href="https://mytravel.bookingcore.co/forgot-password">Forgot Password?</a>
+                                </div>
+                            </div>
+                            <div class="error message-error invalid-feedback"></div>
+                            <div class="form-group">
+                                <button class="btn btn-primary form-submit" type="submit">
+                                    Login
+                                    <span class="spinner-grow spinner-grow-sm icon-loading" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="c-grey font-medium f14 text-center"> Do not have an account? <a href=""
+                                    data-target="#register" data-toggle="modal">Sign Up</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade login" id="register" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content relative">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sign Up</h4>
+                        <span class="c-pointer" data-dismiss="modal" aria-label="Close">
+                            <i class="input-icon field-icon fa">
+                                <img src="https://mytravel.bookingcore.co/images/ico_close.svg" alt="close">
+                            </i>
+                        </span>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form bravo-form-register" method="post"
+                            action="https://mytravel.bookingcore.co/register">
+                            <input type="hidden" name="_token" value="p36G1xEn0kWhIEv8ZVs2svtzVENdPWyXCensO8jn">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="first_name" autocomplete="off"
+                                            placeholder="First Name">
+                                        <i class="input-icon field-icon icofont-waiter-alt"></i>
+                                        <span class="invalid-feedback error error-first_name"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="last_name" autocomplete="off"
+                                            placeholder="Last Name">
+                                        <i class="input-icon field-icon icofont-waiter-alt"></i>
+                                        <span class="invalid-feedback error error-last_name"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="phone" autocomplete="off"
+                                    placeholder="Phone">
+                                <i class="input-icon field-icon icofont-ui-touch-phone"></i>
+                                <span class="invalid-feedback error error-phone"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" autocomplete="off"
+                                    placeholder="Email address">
+                                <i class="input-icon field-icon icofont-mail"></i>
+                                <span class="invalid-feedback error error-email"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" autocomplete="off"
+                                    placeholder="Password">
+                                <i class="input-icon field-icon icofont-ui-password"></i>
+                                <span class="invalid-feedback error error-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="term">
+                                    <input id="term" type="checkbox" name="term" class="mr5">
+                                    I have read and accept the <a href='' target='_blank'>Terms and Privacy Policy</a>
+                                    <span class="checkmark fcheckbox"></span>
+                                </label>
+                                <div><span class="invalid-feedback error error-term"></span></div>
+                            </div>
+                            <div class="error message-error invalid-feedback"></div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary form-submit">
+                                    Sign Up
+                                    <span class="spinner-grow spinner-grow-sm icon-loading" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="c-grey f14 text-center">
+                                Already have an account?
+                                <a href="#" data-target="#login" data-toggle="modal">Log In</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cdn-browser-modal" class="modal fade">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div id="cdn-browser" class="cdn-browser d-flex flex-column" v-cloak
+                        :class="{is_loading:isLoading}">
+                        <div class="files-nav flex-shrink-0">
+                            <div class="d-flex justify-content-between">
+                                <div class="col-left d-flex align-items-center">
+                                    <div class="filter-item">
+                                        <input type="text" placeholder="Search file name...." class="form-control"
+                                            v-model="filter.s" @keyup.enter="filter.page = 1;reloadLists()">
+                                    </div>
+                                    <div class="filter-item">
+                                        <button class="btn btn-default" @click="reloadAll()">
+                                            <i class="fa fa-search"></i> Search</button>
+                                    </div>
+                                    <div class="filter-item">
+                                        <small><i>Total: {{total}} files</i></small>
+                                    </div>
+                                </div>
+                                <div class="div">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" @click="setViewType('grid')" class="btn"
+                                            :class="viewType == 'grid' ? 'btn-secondary' : 'btn-outline-secondary'"><i
+                                                class="fa fa-th"></i></button>
+                                        <button type="button" @click="setViewType('list')" class="btn"
+                                            :class="viewType != 'grid' ? 'btn-secondary' : 'btn-outline-secondary'"><i
+                                                class="fa fa-bars"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-right">
+                                    <i class="fa-spin fa fa-spinner icon-loading active" v-show="isLoading"></i>
+                                    <button class="btn btn-primary mr-2" @click="addFolder">
+                                        <span><i class="fa fa-folder"></i> Add Folder</span>
+                                    </button>
+                                    <button class="btn btn-success btn-pick-files">
+                                        <span><i class="fa fa-upload"></i> Upload</span>
+                                        <input multiple :accept="accept_type" type="file" name="files[]" ref="files">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="upload-new" v-show="showUploader" display="none">
+                            <input type="file" name="filepond[]" class="my-pond">
+                        </div>
+                        <div class="files-list">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a @click="toFolderRoot" href="#">Home</a></li>
+                                    <li v-for="(item,index) in breadcrumbs" class="breadcrumb-item active"
+                                        aria-current="page"><a @click.prevent="showFolder(item,index)" href="#">{{
+                                            item.name }}</a></li>
+                                </ol>
+                            </nav>
+                            <div class="border-top border-left mb-3 px-3" v-if="viewType == 'list'">
+                                <div class="row font-weight-bold " style="font-size: 16px">
+                                    <div class="col-sm-6 py-2 border-bottom border-right">Name</div>
+                                    <div class="col-sm-2 py-2 border-bottom border-right">Type</div>
+                                    <div class="col-sm-2 py-2 border-bottom border-right">Created At</div>
+                                    <div class="col-sm-2 py-2 border-bottom border-right">Size</div>
+                                </div>
+                                <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder"
+                                    @dblclick="showFolder(folder)" @update="updateFolder" :view-type="viewType"
+                                    v-for="(folder,index) in folders" :index="index" :key="'folder-'+index"
+                                    :folder="folder"></folder-item>
+                                <file-item v-for="(file,index) in files" :key="index" :view-type="viewType"
+                                    :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
+                            </div>
+                            <div class="files-wraps " v-if="viewType == 'grid'" :class="'view-'+viewType">
+                                <folder-item @deleted="deletedFolder" @toggle-edit="toggleEditFolder"
+                                    @dblclick="showFolder(folder)" @update="updateFolder"
+                                    v-for="(folder,index) in folders" :index="index" :key="'folder-'+index"
+                                    :folder="folder"></folder-item>
+                                <file-item v-for="(file,index) in files" :key="index" :view-type="viewType"
+                                    :selected="selected" :file="file" v-on:select-file="selectFile"></file-item>
+                            </div>
+                            <p class="no-files-text text-center" v-show="!total && apiFinished" style="display: none">No
+                                file found</p>
+                            <div class="text-center" v-if="totalPage > 1">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item" :class="{disabled:filter.page <= 1}">
+                                            <a class="page-link" v-if="filter.page <=1">Previous</a>
+                                            <a class="page-link" href="#" v-if="filter.page > 1"
+                                                v-on:click="changePage(filter.page-1,$event)">Previous</a>
+                                        </li>
+                                        <li class="page-item" v-if="p >= (filter.page-3) && p <= (filter.page+3)"
+                                            :class="{active: p == filter.page}" v-for="p in totalPage"
+                                            @click="changePage(p,$event)">
+                                            <a class="page-link" href="#">{{p}}</a>
+                                        </li>
+                                        <li class="page-item" :class="{disabled:filter.page >= totalPage}">
+                                            <a v-if="filter.page >= totalPage" class="page-link">Next</a>
+                                            <a href="#" class="page-link" v-if="filter.page < totalPage"
+                                                v-on:click="changePage(filter.page+1,$event)">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="browser-actions d-flex justify-content-between flex-shrink-0"
+                            v-if="selected.length">
+                            <div class="col-left" v-show="selected.length">
+                                <div class="control-remove" v-if="selected && selected.length">
+                                    <button class="btn btn-danger" @click="removeFiles">Delete file</button>
+                                </div>
+                                <div class="control-info" v-if="selected && selected.length">
+                                    <div class="count-selected">{{selected.length}} file selected</div>
+                                    <div class="clear-selected" @click="selected=[]"><i>unselect</i></div>
+                                </div>
+                            </div>
+                            <div class="col-right" v-show="selected.length">
+                                <button class="btn btn-primary" :class="{disabled:!selected.length}"
+                                    @click="sendFiles">Use file</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script type="text/x-template" id="file-item-template">
+    <div :class="viewType == 'grid'  ? 'file-item' : 'file-list-item'" >
+        <div class="row hover:bg-f5f5f5 cursor-pointer" v-if="viewType == 'list'" @click="selectFile(file)" :class="{'active':selected.indexOf(file.id) !== -1}">
+            <div class="col-sm-6 py-1 border-right border-bottom">
+                <span v-html="getFileThumb(file)" class="mr-2 item-preview"></span> {{ file.file_name }}</div>
+            <div class="col-sm-2 py-1  border-right border-bottom">{{file.file_extension}}</div>
+            <div class="col-sm-2 py-1  border-right border-bottom">{{file.created_at}}</div>
+            <div class="col-sm-1 py-1 border-bottom">{{humanFileSize(file.file_size)}}</div>
+            <div class="col-sm-1 py-1  border-right border-bottom d-flex justify-content-end">
+                <a :href="file.full_size" target="_blank" title="View file"><i class=" fa fa-eye"></i></a>
+            </div>
+        </div>
+        <div v-if="viewType == 'grid'" class="inner" :class="{active:selected.indexOf(file.id) !== -1 }" @click="selectFile(file)" :title="file.file_name">
+            <div class="file-thumb" v-if="viewType=='grid'" v-html="getFileThumb(file)">
+                </div>
+                <div class="file-name">{{file.file_name}}</div>
+                <span class="file-checked-status" v-show="selected.indexOf(file.id) !== -1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M186.301 339.893L96 249.461l-32 30.507L186.301 402 448 140.506 416 110z"/></svg>
+            </span>
+        </div>
+    </div>
+</script>
+        <script type="text/x-template" id="folder-item-template">
+    <div :class="viewType == 'grid'  ? 'file-item folder-item' : 'folder-item'" @dblclick="$emit('dblclick',folder,index)">
+        <div class="row hover:bg-f5f5f5 cursor-pointer" v-if="viewType == 'list'">
+            <div class="col-sm-6 py-1 border-right border-bottom">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-grow-1 align-items-center">
+                        <div>
+                            <img src="/icon/folder.png" width="20px" height="auto" class="mr-2 flex-shrink-0" alt="">
+                        </div>
+                        <div class="text-center font-weight-medium" v-if="!folder.onEdit">{{folder.name}}</div>
+                        <div class="" v-if="folder.onEdit">
+                            <input ref="input" type="text" @blur="saveName" class="form-control" v-model="folder_name" >
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="btn-edit btn-sm position-absolute" @click.prevent="openEdit"><i class="fa fa-edit"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 py-1 border-right border-bottom">Folder</div>
+            <div class="col-sm-2 py-1 border-right border-bottom">{{ folder.created_at }}</div>
+            <div class="col-sm-2 py-1 border-right border-bottom d-flex justify-content-end">
+                <a href="#" class="btn-sm text-danger" title="Delete this folder" @click.prevent="deleteFolder"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
+        <div v-if="viewType == 'grid'" class="inner d-flex flex-column  position-relative">
+            <div class="file-thumb flex-grow-1 d-flex align-items-center justify-content-center" style="background: #7b7d7e">
+                <i class="fa fa-folder-o" style="font-size: 90px;color:white"></i>
+            </div>
+            <div class="text-center font-weight-medium p-2" v-if="!folder.onEdit">{{folder.name}}</div>
+            <div class="" v-if="folder.onEdit">
+                <input ref="input" type="text" @blur="saveName" class="form-control" v-model="folder_name" >
+            </div>
+            <a href="#" class="btn-edit btn btn-sm btn-warning position-absolute top-0 right-0 m-2" @click.prevent="openEdit"><i class="fa fa-edit"></i></a>
+        </div>
+    </div>
+</script>
+        <link rel="stylesheet" href="https://mytravel.bookingcore.co/libs/flags/css/flag-icon.min.css">
+
+
+
+
+        <script src="https://mytravel.bookingcore.co/libs/lazy-load/intersection-observer.js"></script>
+        <script async src="https://mytravel.bookingcore.co/libs/lazy-load/lazyload.min.js"></script>
+        <script>
+            // Set the options to make LazyLoad self-initialize
+            window.lazyLoadOptions = {
+                elements_selector: ".lazy",
+                // ... more custom settings?
+            };
+
+            // Listen to the initialization event and get the instance of LazyLoad
+            window.addEventListener('LazyLoad::Initialized', function (event) {
+                window.lazyLoadInstance = event.detail.instance;
+            }, false);
+        </script>
+        <script src="https://mytravel.bookingcore.co/libs/jquery-3.6.3.min.js"></script>
+        <script
+            src="https://mytravel.bookingcore.co/themes/mytravel/libs/jquery-migrate/jquery-migrate.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/header.js"></script>
+        <script>
+            $(document).on('ready', function () {
+                $.MyTravelHeader.init($('#header'));
+            });
+        </script>
+        <script src="https://mytravel.bookingcore.co/libs/lodash.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/libs/vue/vue.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/libs/bootbox/bootbox.min.js"></script>
+
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/fancybox/jquery.fancybox.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/slick/slick.js"></script>
+
+
+        <script src="https://mytravel.bookingcore.co/module/media/js/browser.js?_ver=2.2.0"></script>
+        <script src="https://mytravel.bookingcore.co/libs/carousel-2/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="https://mytravel.bookingcore.co/libs/daterange/moment.min.js"></script>
+        <script type="text/javascript"
+            src="https://mytravel.bookingcore.co/libs/daterange/daterangepicker.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/libs/select2/js/select2.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/js/functions.js?_ver=2.2.0"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/custombox/custombox.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/custombox/custombox.legacy.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/libs/custombox/window.modal.js"></script>
+
+        <script src="https://mytravel.bookingcore.co/libs/pusher.min.js"></script>
+        <script src="https://mytravel.bookingcore.co/themes/mytravel/js/home.js?_ver=2.2.0"></script>
+
+        <script src="https://mytravel.bookingcore.co/module/user/js/user.js?_ver=2.2.0"></script>
+        <div class="booking_cookie_agreement p-3 fixed-bottom">
+            <div class="container d-flex ">
+                <div class="content-cookie">
+                    <p>This website requires cookies to provide all of its features. By using our website, you agree to
+                        our use of cookies. <a href='#'>More info</a></p>
+                </div>
+                <button class="btn save-cookie">Got it</button>
+            </div>
+        </div>
+        <script>
+            var save_cookie_url = 'https://mytravel.bookingcore.co/check-cookie';
+        </script>
+        <script src="https://mytravel.bookingcore.co/js/cookie.js?_ver=2.2.0"></script>
+
+
+        <script>
+            $('.btn-info-booking').on('click', function (e) {
+                var btn = $(this);
+                $(this).find('.user_id').html(btn.data('id'));
+                $(this).find('.modal-body').html('<div class="d-flex justify-content-center">Loading...</div>');
+                var modal = $("#modal_booking_detail");
+                $.get(btn.data('ajax'), function (html) {
+                    modal.find('.modal-body').html(html);
+                }
+                )
+            })
+        </script>
+
+    </div>
+    <script
+        src="https://mytravel.bookingcore.co/libs/filerobot-image-editor/filerobot-image-editor.min.js?_ver=2.2.0"></script>
+</body>
+
+</html>
